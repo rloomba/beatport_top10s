@@ -1,22 +1,21 @@
-<style type="text/css">
-  .container {
-    margin: 20px auto;
-    width: 600px;
-    padding: 0px 20px 20px 20px;
-    border: 1px dotted black;
-  }
-  th {
-    text-align: left;
-  }
-</style>
+
 <% @tops.each do |top| %>
-  <h1><%= get_genre_name(top.genre) %>Top Tracks</h1>
-  <ul>
-    <% find_top_tracks(top).each do |track| %>
-      <li id="track-id<%= track.id %>"><%=track.name%> by <% track.artists.each do |artist| %>
-        <%= artist.name %>,
+  <h1><%= get_genre_name(top.genre) %> Top Tracks</h1>
+    <div class="top-10">
+      <ol id="<%= top.genre %>">
+        <% find_top_tracks(top).each do |track| %>
+          <li>
+          <ul>
+            <li id="track-id<%= track.id %>"><%=track.title%> </li>
+            <li> <% track.artists.each do |artist| %>
+              <%= artist.name %>
+              <%= "," unless artist == track.artists.last %>
+              <% end %>
+            </li>
+            <li> <%= track.label.name %></li>
+          </li>
+        </ul>
         <% end %>
-       </li>
-    <% end %>
-  </ul>
+      </ol>
+    </div>
 <% end %>
