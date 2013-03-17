@@ -12,8 +12,7 @@ gem 'thin'
 
 gem 'activesupport'
 gem 'activerecord'
-gem 'redis'
-gem 'sidekiq'
+gem 'whenever', :require => false
 
 gem 'rake'
 gem 'beatport'
